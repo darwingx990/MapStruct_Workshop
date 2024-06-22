@@ -1,7 +1,13 @@
 package com.riwi.MapstructWorkshop.api.controllers;
 
 
+import com.riwi.MapstructWorkshop.api.dto.request.BookRequest;
+import com.riwi.MapstructWorkshop.api.dto.response.BookResponse;
+import com.riwi.MapstructWorkshop.infrasctucture.abstract_services.IBookService;
+import com.riwi.MapstructWorkshop.infrasctucture.services.BookService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,15 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class BookController {
 
-//    private final IbookService BookService;
-//
-//
-//
-//    @PostMapping
-//    public ResponseEntity<com.riwi.LibrosYa.Api.dto.response.BookResponse> insert(@Validated @RequestBody bookRequest request) {
-//        com.riwi.LibrosYa.Api.dto.response.BookResponse response = BookService.create(request);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-//    }
+    private IBookService bookService;
+
+
+    @PostMapping
+    public ResponseEntity<BookResponse> insert(@Validated @RequestBody BookRequest request) {
+        BookResponse response = bookService.create(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
 
 
 }

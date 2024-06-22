@@ -30,9 +30,9 @@ public class Book {
     @Column(length = 20,nullable = false)
     String isbn;
 
-//    @OneToMany(mappedBy = "Book")
-//    private List<Loan> loans;
-//
-//    @OneToMany(mappedBy = "Book")
-//    private List<Reservation> reservations;
+    @OneToMany(mappedBy = "Book")
+    private List<Loan> loans;
+
+    @OneToMany(mappedBy = "Book")
+    private List<Reservation> reservations;
 }
