@@ -1,4 +1,7 @@
 package com.riwi.MapstructWorkshop.domain.repository;
 
-public interface userRepository {
+import com.riwi.MapstructWorkshop.domain.entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
 }

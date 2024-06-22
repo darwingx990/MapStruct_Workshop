@@ -1,30 +1,31 @@
 package com.riwi.MapstructWorkshop.domain.entities;
 
-import com.riwi.MapstructWorkshop.utils.enaums.LoanStatus;
+
+import com.riwi.MapstructWorkshop.utils.enaums.ReservationStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.Id;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-@Entity( name = "loan")
+@Entity( name = "reservation")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Loan {
+public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  id;
+
     @Column(nullable = false)
-    Date loanDate;
-    @Column(nullable = false)
-    Date returnDate;
+    LocalDateTime ReservationDate;
     @Enumerated(EnumType.STRING)
-    LoanStatus status;
+    ReservationStatus status;
 
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
@@ -33,5 +34,7 @@ public class Loan {
     @ManyToOne
     @JoinColumn(name = "id_book", nullable = false)
     private Book book;
+
+
 
 }
